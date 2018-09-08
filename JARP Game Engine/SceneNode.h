@@ -17,13 +17,21 @@ public:
     void attachChild(SceneNodePtr child);
     SceneNodePtr detachChild(const SceneNode& node);
 
-protected:
-    virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
-    virtual void drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const;
-    virtual void drawChildren(sf::RenderTarget& target, sf::RenderStates states) const;
+public:
+    void update(sf::Time dt);
 
 private:
-    std::vector<SceneNodePtr> mChildren;
+    virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+    virtual void drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const;
+    void drawChildren(sf::RenderTarget& target, sf::RenderStates states) const;
+
+    virtual void updateCurrent(sf::Time dt);
+    void updateChildren(sf::Time dt);
+
+private:
     SceneNode*                mParent;
+
+protected:
+    std::vector<SceneNodePtr> mChildren;
 };
 

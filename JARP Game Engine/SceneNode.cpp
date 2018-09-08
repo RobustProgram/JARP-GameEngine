@@ -48,3 +48,22 @@ void SceneNode::drawChildren(sf::RenderTarget& target, sf::RenderStates states) 
         (*itr)->draw(target, states);
     }
 }
+
+void SceneNode::update(sf::Time dt)
+{
+    this->updateCurrent(dt);
+    this->updateChildren(dt);
+}
+
+void SceneNode::updateCurrent(sf::Time dt)
+{
+    // We do nothing for the base class
+}
+
+void SceneNode::updateChildren(sf::Time dt)
+{
+    for (auto itr = this->mChildren.begin(); itr != mChildren.end(); itr++)
+    {
+        (*itr)->update(dt);
+    }
+}

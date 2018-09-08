@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <array>
 #include "SceneNode.h"
+#include "LightMapNode.h"
 #include "LightSource.h"
 
 class World : private sf::NonCopyable
@@ -12,6 +13,7 @@ public:
     ~World();
 
     void draw();
+    void update(sf::Time dt);
 
 private:
     void buildScene();
@@ -20,7 +22,6 @@ private:
     enum Layer
     {
         Background,
-        Shadow,
         Solids,
         Lights,
         LayerCount

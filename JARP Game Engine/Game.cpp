@@ -1,7 +1,7 @@
 #include "Game.h"
 
 Game::Game()
-: gWindow(sf::VideoMode(640, 480), "Testing"), gWorld(gWindow)
+: gWindow(sf::VideoMode(1024, 720), "Testing"), gWorld(gWindow)
 {
     gWindow.setVerticalSyncEnabled(true);
 }
@@ -43,11 +43,12 @@ void Game::processEvents()
 
 void Game::render()
 {
-    gWindow.clear();
+    gWindow.clear(sf::Color::White);
     gWorld.draw();
     gWindow.display();
 }
 
 void Game::update(sf::Time deltaTime)
 {
+    gWorld.update(deltaTime);
 }
